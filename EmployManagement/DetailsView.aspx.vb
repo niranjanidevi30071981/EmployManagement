@@ -2,11 +2,26 @@
 Imports Newtonsoft.Json
 Imports NLog
 
+''' <summary>
+''' Ticket No:<<>>
+''' Displying the selected employee details.
+''' </summary>
 Public Class DetailsView
     Inherits System.Web.UI.Page
 
-    Dim obj As New EmployeeCommonDetails()
+    ''' <summary>
+    ''' Ticket No:<<>>
+    ''' Creating local objects for displying the selected employee.
+    ''' </summary>
+    Dim objCommon As New EmployeeCommonDetails()
     Private logger As Logger = LogManager.GetCurrentClassLogger()
+
+    ''' <summary>
+    ''' Ticket No:<<>>
+    ''' Intialization of emplyee objects.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not IsPostBack Then
             ' Check if the "Id" query string parameter exists
@@ -17,9 +32,15 @@ Public Class DetailsView
             End If
         End If
     End Sub
+
+    ''' <summary>
+    ''' Ticket No:<<>>
+    ''' Intialize local controls for the selected employee.
+    ''' </summary>
+    ''' <param name="empId"></param>
     Private Sub LoadEmployeeDetails(empId As Integer)
         Try
-            Dim employee = obj.GetEmployeeId(empId)
+            Dim employee = objCommon.GetEmployeeId(empId)
             If employee IsNot Nothing Then
                 lblId.Text = employee.Id
                 lblName.Text = employee.Name
@@ -38,6 +59,12 @@ Public Class DetailsView
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Ticket No:<<>>
+    ''' Editing of the selected employee for updating of the field values.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Protected Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
         Try
             Dim selectedEmployeeId As Integer = Convert.ToInt32(ViewState("SelectedEmployeeId"))

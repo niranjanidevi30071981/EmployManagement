@@ -16,6 +16,7 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
     <script type="text/javascript">
+        //Asynchronous call for update employee details as per selected employee using jquery ajax 
         function updateItem(id) {
 
             var lblstatus = document.getElementById('lblStatus');
@@ -67,6 +68,8 @@
 
             }
         }
+
+        //Asynchronous call for delete the employee details as per selected employee jquery ajax 
         function deleteItem(id) {
 
             var lblstatus = document.getElementById('lblStatus');

@@ -9,6 +9,13 @@ Public Class EmployeeCommonDetails
 
 
     Private logger As Logger = LogManager.GetCurrentClassLogger()
+
+    ''' <summary>
+    ''' Ticket no:<<>>
+    ''' Retrieves all employee IDs details from the API.
+    ''' </summary>
+    ''' <returns>A list of Employee objects.</returns>
+    ''' <exception cref="Exception">Logs and handles exceptions that occur during the process.</exception>
     Public Function GetAllEmployeeId() As List(Of EmployManagement.Employee.Models.Employee)
 
         Try
@@ -30,6 +37,14 @@ Public Class EmployeeCommonDetails
             logger.Error(ex, "GetAllEmployeeId")
         End Try
     End Function
+
+    ''' <summary>
+    ''' Ticket no:<<>>
+    ''' Retrieves a specific employee by ID from the API.
+    ''' </summary>
+    ''' <param name="id">The ID of the employee to retrieve.</param>
+    ''' <returns>An Employee object.</returns>
+    ''' <exception cref="Exception">Logs and handles exceptions that occur during the process.</exception>
     Public Function GetEmployeeId(ByVal id As String) As EmployManagement.Employee.Models.Employee
         Try
 
@@ -50,6 +65,14 @@ Public Class EmployeeCommonDetails
             logger.Error(ex, "GetEmployeeId")
         End Try
     End Function
+
+    ''' <summary>
+    ''' Ticket no:<<>>
+    ''' Updates an existing employee asynchronously.
+    ''' </summary>
+    ''' <param name="employee">The employee data to update.</param>
+    ''' <returns>A task representing an asynchronous operation that returns true if the update was successful, otherwise false.</returns>
+    ''' <exception cref="Exception">Logs and handles exceptions that occur during the process.</exception>
     Public Async Function UpdateEmployeeAsync(employee As EmployManagement.Employee.Models.Employee) As Task(Of Boolean)
         Try
 
@@ -68,6 +91,14 @@ Public Class EmployeeCommonDetails
             logger.Error(ex, "UpdateEmployeeAsync")
         End Try
     End Function
+
+    ''' <summary>
+    ''' Ticket no:<<>>
+    ''' Delete an existing employee asynchronously.
+    ''' </summary>
+    ''' <param name="id">The employee data to delete.</param>
+    ''' <returns>A task representing an asynchronous operation that returns true if the delete was successful, otherwise false.</returns>
+    ''' <exception cref="Exception">Logs and handles exceptions that occur during the process.</exception>
     Protected Friend Function DeleteEmployeeId(ByVal id As String) As Boolean
         Try
             Using client = New HttpClient()

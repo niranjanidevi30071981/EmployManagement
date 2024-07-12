@@ -7,11 +7,25 @@ Imports System.Collections.Generic
 Imports NLog
 Imports System.Reflection
 
+''' <summary>
+''' Ticket No:<<>>
+''' Implimneted the class for Get the all employee details and in table format
+''' </summary>
 Public Class _Default
     Inherits Page
 
+    ''' <summary>
+    ''' Creating local object for log and api call implimentation
+    ''' </summary>
     Private logger As Logger = LogManager.GetCurrentClassLogger()
-    Dim obj As New EmployeeCommonDetails()
+    Dim objCommon As New EmployeeCommonDetails()
+
+    ''' <summary>
+    ''' Ticket No:<<>>
+    ''' page load event for instial page process
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
         If Not IsPostBack Then
             ' BindEmployeeList()
@@ -19,6 +33,11 @@ Public Class _Default
 
         End If
     End Sub
+
+    ''' <summary>
+    ''' Ticket No:<<>>
+    ''' Bind the retun values to grid.
+    ''' </summary>
     Protected Sub BindGridView()
         Try
             Dim data As List(Of EmployManagement.Employee.Models.Employee) = GetDataFromApi()
@@ -30,6 +49,11 @@ Public Class _Default
 
     End Sub
 
+    ''' <summary>
+    ''' Ticket No:<<>>
+    ''' API return values are sending to the grid bind.
+    ''' </summary>
+    ''' <returns></returns>
     Protected Function GetDataFromApi() As List(Of EmployManagement.Employee.Models.Employee)
         Try
 
@@ -50,6 +74,12 @@ Public Class _Default
         End Try
     End Function
 
+    ''' <summary>
+    ''' Ticket No:<<>>
+    ''' Navigating to the Employee view page.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Protected Sub EditRecord(ByVal sender As Object, ByVal e As EventArgs)
         Try
             Dim btn As LinkButton = CType(sender, LinkButton)
@@ -61,6 +91,13 @@ Public Class _Default
         End Try
 
     End Sub
+
+    ''' <summary>
+    ''' Ticket No:<<>>
+    ''' Navingatinthe employee view page.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Protected Sub ViewRecord(ByVal sender As Object, ByVal e As EventArgs)
         Try
             Dim btn As LinkButton = CType(sender, LinkButton)
@@ -72,6 +109,13 @@ Public Class _Default
         End Try
 
     End Sub
+
+    ''' <summary>
+    ''' Ticket No:<<>>
+    ''' Delete the employee record.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Protected Sub DeleteRecord(ByVal sender As Object, ByVal e As EventArgs)
         Try
             Dim btn As LinkButton = CType(sender, LinkButton)
@@ -86,6 +130,13 @@ Public Class _Default
             logger.Error(ex, "DeleteRecord")
         End Try
     End Sub
+
+    ''' <summary>
+    ''' Ticket No:<<>>
+    ''' Calling of api method for delete employee record.
+    ''' </summary>
+    ''' <param name="id"></param>
+    ''' <returns></returns>
     Protected Function DeleteRecordInApi(ByVal id As String) As Boolean
         Try
             Using client = New HttpClient()
